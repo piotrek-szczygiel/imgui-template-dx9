@@ -56,7 +56,7 @@ if errorlevel 1 goto :end
 
 if /i "%1" == "release" (
     del *.obj >nul 2>&1
-    xcopy /s "%root%\data" "%root%\release"
+    xcopy /S /Q /Y "%root%\data" "%root%\release"
 )
 
 :end
