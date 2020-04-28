@@ -1,9 +1,8 @@
 #pragma once
 
-struct Program
-{
+struct Program {
     float value = 0.0f;
-    bool demo = false;
+    bool demo = true;
 };
 
 void program_frame(Program* p);
