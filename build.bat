@@ -15,8 +15,7 @@ if /i "%1" == "fmt" (
     exit /b
 )
 
-where /q cl
-if errorlevel 0 goto :build
+if not "%VisualStudioVersion%" == "" goto :build
 
 for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -property installationPath`) do (
     if exist "%%i" (
@@ -32,7 +31,7 @@ if "%vcvarsall%" == "" (
 call "%vcvarsall%" x64
 
 :build
-set cl_flags=/nologo /WL /W4 /diagnostics:column /FC /D UNICODE /D _UNICODE /I"%root%\imgui" /Fe:finder.exe
+set cl_flags=/nologo /WL /W4 /diagnostics:column /FC /D UNICODE /D _UNICODE /I"%root%\imgui" /Fe:program.exe
 set ld_flags=/incremental:no d3d9.lib
 
 if /i "%1" == "release" (
